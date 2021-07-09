@@ -15,10 +15,10 @@ if [ -d "$1" ]
     touch $1/test_file > /dev/null 2>&1
     if [ $? -eq 0 ]
       then
-	      rm $1/test_file
+	rm $1/test_file
       else
-	      echo "You don't have permissions to write in $1"
-	      exit 1
+	echo "You don't have permissions to write in $1"
+	exit 1
     fi
   else
     echo "Directory $1 not found"
@@ -30,11 +30,11 @@ if [ `pgrep mysql | wc -l` -le 1 ]
     mysqldump -u moodle -p$MYSQL_PASSWORD moodle_test | gzip -9 > "$1/moodle_test-$DATE.sql.gz"
     if [ $? -eq 0 ]
       then
-	      echo "Backup completed successfully"
-	      exit 0
+	echo "Backup completed successfully"
+	exit 0
       else
-	      echo "Some errors occurred during backup creation"
-	      exit 1
+	echo "Some errors occurred during backup creation"
+	exit 1
     fi
   else
     echo "Service mysql don't running"
